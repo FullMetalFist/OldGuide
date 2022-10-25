@@ -37,6 +37,10 @@
 		99E0D240290753AA00A7D6B7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E0D23F290753AA00A7D6B7 /* CoreData.framework */; };
 		99E0D242290753B000A7D6B7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99E0D241290753B000A7D6B7 /* Accelerate.framework */; };
 		99E0D246290754A600A7D6B7 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 99E0D245290754A600A7D6B7 /* GoogleMaps.bundle */; };
+		99E0D2492908167A00A7D6B7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D2482908167A00A7D6B7 /* MapViewModel.swift */; };
+		99E0D24B2908289F00A7D6B7 /* subway.json in Resources */ = {isa = PBXBuildFile; fileRef = 99E0D24A2908289F00A7D6B7 /* subway.json */; };
+		99E0D24D29082A6300A7D6B7 /* ExitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D24C29082A6300A7D6B7 /* ExitModel.swift */; };
+		99E0D25029084EEA00A7D6B7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,10 @@
 		99E0D241290753B000A7D6B7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		99E0D2432907548000A7D6B7 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "GoogleMaps-7.1.0-beta/GoogleMaps.xcframework/ios-arm64_x86_64-simulator/GoogleMaps.framework"; sourceTree = "<group>"; };
 		99E0D245290754A600A7D6B7 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "GoogleMaps-7.1.0-beta/GoogleMaps.xcframework/ios-arm64_x86_64-simulator/GoogleMaps.framework/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		99E0D2482908167A00A7D6B7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		99E0D24A2908289F00A7D6B7 /* subway.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = subway.json; sourceTree = "<group>"; };
+		99E0D24C29082A6300A7D6B7 /* ExitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitModel.swift; sourceTree = "<group>"; };
+		99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,12 +173,16 @@
 		99E0D1E52907518300A7D6B7 /* Guide */ = {
 			isa = PBXGroup;
 			children = (
+				99E0D24E29084DED00A7D6B7 /* Outage */,
+				99E0D247290814A100A7D6B7 /* Map */,
 				99E0D1E62907518300A7D6B7 /* AppDelegate.swift */,
 				99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */,
 				99E0D1EA2907518300A7D6B7 /* ViewController.swift */,
+				99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */,
 				99E0D1EC2907518300A7D6B7 /* Main.storyboard */,
 				99E0D1EF2907518400A7D6B7 /* Assets.xcassets */,
 				99E0D1F12907518400A7D6B7 /* LaunchScreen.storyboard */,
+				99E0D24A2908289F00A7D6B7 /* subway.json */,
 				99E0D1F42907518400A7D6B7 /* Info.plist */,
 			);
 			path = Guide;
@@ -218,6 +230,22 @@
 				99E0D2212907533100A7D6B7 /* GoogleMaps.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99E0D247290814A100A7D6B7 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				99E0D2482908167A00A7D6B7 /* MapViewModel.swift */,
+				99E0D24C29082A6300A7D6B7 /* ExitModel.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		99E0D24E29084DED00A7D6B7 /* Outage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Outage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E0D24B2908289F00A7D6B7 /* subway.json in Resources */,
 				99E0D1F32907518400A7D6B7 /* LaunchScreen.storyboard in Resources */,
 				99E0D1F02907518400A7D6B7 /* Assets.xcassets in Resources */,
 				99E0D1EE2907518300A7D6B7 /* Main.storyboard in Resources */,
@@ -352,9 +381,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99E0D25029084EEA00A7D6B7 /* NetworkManager.swift in Sources */,
 				99E0D1EB2907518300A7D6B7 /* ViewController.swift in Sources */,
 				99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */,
+				99E0D24D29082A6300A7D6B7 /* ExitModel.swift in Sources */,
 				99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */,
+				99E0D2492908167A00A7D6B7 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
