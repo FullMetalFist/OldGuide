@@ -41,6 +41,7 @@
 		99E0D24B2908289F00A7D6B7 /* subway.json in Resources */ = {isa = PBXBuildFile; fileRef = 99E0D24A2908289F00A7D6B7 /* subway.json */; };
 		99E0D24D29082A6300A7D6B7 /* ExitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D24C29082A6300A7D6B7 /* ExitModel.swift */; };
 		99E0D25029084EEA00A7D6B7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */; };
+		99E0D25229097BE500A7D6B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D25129097BE500A7D6B7 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		99E0D24A2908289F00A7D6B7 /* subway.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = subway.json; sourceTree = "<group>"; };
 		99E0D24C29082A6300A7D6B7 /* ExitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitModel.swift; sourceTree = "<group>"; };
 		99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		99E0D25129097BE500A7D6B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */,
 				99E0D1EA2907518300A7D6B7 /* ViewController.swift */,
 				99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */,
+				99E0D25129097BE500A7D6B7 /* Constants.swift */,
 				99E0D1EC2907518300A7D6B7 /* Main.storyboard */,
 				99E0D1EF2907518400A7D6B7 /* Assets.xcassets */,
 				99E0D1F12907518400A7D6B7 /* LaunchScreen.storyboard */,
@@ -385,6 +388,7 @@
 				99E0D1EB2907518300A7D6B7 /* ViewController.swift in Sources */,
 				99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */,
 				99E0D24D29082A6300A7D6B7 /* ExitModel.swift in Sources */,
+				99E0D25229097BE500A7D6B7 /* Constants.swift in Sources */,
 				99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */,
 				99E0D2492908167A00A7D6B7 /* MapViewModel.swift in Sources */,
 			);
