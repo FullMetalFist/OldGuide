@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E62907518300A7D6B7 /* AppDelegate.swift */; };
 		99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */; };
-		99E0D1EB2907518300A7D6B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1EA2907518300A7D6B7 /* ViewController.swift */; };
+		99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1EA2907518300A7D6B7 /* MapViewController.swift */; };
 		99E0D1EE2907518300A7D6B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E0D1EC2907518300A7D6B7 /* Main.storyboard */; };
 		99E0D1F02907518400A7D6B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E0D1EF2907518400A7D6B7 /* Assets.xcassets */; };
 		99E0D1F32907518400A7D6B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E0D1F12907518400A7D6B7 /* LaunchScreen.storyboard */; };
@@ -42,6 +42,8 @@
 		99E0D24D29082A6300A7D6B7 /* ExitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D24C29082A6300A7D6B7 /* ExitModel.swift */; };
 		99E0D25029084EEA00A7D6B7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */; };
 		99E0D2542909871600A7D6B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D2532909871600A7D6B7 /* Constants.swift */; };
+		99E0D2562909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D2552909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift */; };
+		99E0D2592909CFE300A7D6B7 /* ServiceEntityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D2582909CFE300A7D6B7 /* ServiceEntityModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +67,7 @@
 		99E0D1E32907518300A7D6B7 /* Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E0D1E62907518300A7D6B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		99E0D1EA2907518300A7D6B7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		99E0D1EA2907518300A7D6B7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		99E0D1ED2907518300A7D6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99E0D1EF2907518400A7D6B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99E0D1F22907518400A7D6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -102,6 +104,8 @@
 		99E0D24C29082A6300A7D6B7 /* ExitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitModel.swift; sourceTree = "<group>"; };
 		99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		99E0D2532909871600A7D6B7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		99E0D2552909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorEscalatorStatusModel.swift; sourceTree = "<group>"; };
+		99E0D2582909CFE300A7D6B7 /* ServiceEntityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEntityModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,11 +179,11 @@
 		99E0D1E52907518300A7D6B7 /* Guide */ = {
 			isa = PBXGroup;
 			children = (
+				99E0D2572909CFC800A7D6B7 /* ServiceStatus */,
 				99E0D24E29084DED00A7D6B7 /* Outage */,
 				99E0D247290814A100A7D6B7 /* Map */,
 				99E0D1E62907518300A7D6B7 /* AppDelegate.swift */,
 				99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */,
-				99E0D1EA2907518300A7D6B7 /* ViewController.swift */,
 				99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */,
 				99E0D2532909871600A7D6B7 /* Constants.swift */,
 				99E0D1EC2907518300A7D6B7 /* Main.storyboard */,
@@ -240,6 +244,7 @@
 			children = (
 				99E0D2482908167A00A7D6B7 /* MapViewModel.swift */,
 				99E0D24C29082A6300A7D6B7 /* ExitModel.swift */,
+				99E0D1EA2907518300A7D6B7 /* MapViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -247,8 +252,17 @@
 		99E0D24E29084DED00A7D6B7 /* Outage */ = {
 			isa = PBXGroup;
 			children = (
+				99E0D2552909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift */,
 			);
 			path = Outage;
+			sourceTree = "<group>";
+		};
+		99E0D2572909CFC800A7D6B7 /* ServiceStatus */ = {
+			isa = PBXGroup;
+			children = (
+				99E0D2582909CFE300A7D6B7 /* ServiceEntityModel.swift */,
+			);
+			path = ServiceStatus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,7 +399,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				99E0D25029084EEA00A7D6B7 /* NetworkManager.swift in Sources */,
-				99E0D1EB2907518300A7D6B7 /* ViewController.swift in Sources */,
+				99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */,
+				99E0D2592909CFE300A7D6B7 /* ServiceEntityModel.swift in Sources */,
+				99E0D2562909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift in Sources */,
 				99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */,
 				99E0D24D29082A6300A7D6B7 /* ExitModel.swift in Sources */,
 				99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */,
@@ -574,6 +590,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Guide/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -607,6 +624,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Guide/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

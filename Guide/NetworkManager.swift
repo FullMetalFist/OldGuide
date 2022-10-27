@@ -17,25 +17,51 @@ class NetworkManager {
         guard let ssURL = serviceStatusURL else { return }
         var request = URLRequest(url: ssURL)
         request.setValue(apiKey, forHTTPHeaderField: Constants.apiHeaderKeyString)
-        let task = session.dataTask(with: request) { stuff, response, error in
-            print("\(String(describing: stuff))")
-            print("\(String(describing: response))")
-            print("\(String(describing: error))")
+        let _ = session.dataTask(with: request) { stuff, response, error in
+            
+            guard let httpResponse = response as? HTTPURLResponse else { return }
+            if httpResponse.statusCode == 200 {
+                if let stuff = stuff {
+                    
+                    do {
+                        let bunch = try JSONDecoder().decode([String: [ServiceEntityModel]].self, from: stuff)
+                        print("\(bunch)")
+                    }
+                    catch {
+                        print("\n\n\n\n")
+                        print("\(error)")
+                        print("\(error.localizedDescription)")
+                        print("\n\n\n\n")
+
+                    }
+                        
+                }
+            }
+            
         }
             .resume()
-        // create task
-        // combine?
-        // send
     }
     
     func fetchElevatorEscalatorStatus() {
         guard let eesURL = elevatorEscalatorStatusURL else { return }
         var request = URLRequest(url: eesURL)
         request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
-        let task = session.dataTask(with: request) { stuff, response, error in
-            print("\(String(describing: stuff))")
-            print("\(String(describing: response))")
-            print("\(String(describing: error))")
+        let _ = session.dataTask(with: request) { stuff, response, error in
+            
+            guard let httpResponse = response as? HTTPURLResponse else { return }
+            
+            if httpResponse.statusCode == 200 {
+                if let stuff = stuff {
+                    
+                    do {
+                        let bunch = try JSONDecoder().decode([ElevatorEscalatorStatusModel].self, from: stuff)
+
+                    }
+                    catch {
+                        print("\(error)")
+                    }
+                }
+            }
         }
             .resume()
     }

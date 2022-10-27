@@ -17,6 +17,8 @@ struct Exit: Decodable {
     let route2: String
     let route3: String
     let route4: String
+    let route5: String
+    let route6: String
     let entranceType: EntranceType
     let entry: String
     let exitOnly: String
@@ -49,6 +51,8 @@ struct Exit: Decodable {
         case route2 = "Route_2"
         case route3 = "Route_3"
         case route4 = "Route_4"
+        case route5 = "Route_5"
+        case route6 = "Route_6"
         case entranceType = "Entrance_Type"
         case entry = "Entry"
         case exitOnly = "Exit_Only"
@@ -74,6 +78,8 @@ struct Exit: Decodable {
         route2 = try values.decode(String.self, forKey: .route2)
         route3 = try values.decode(String.self, forKey: .route3)
         route4 = try values.decode(String.self, forKey: .route4)
+        route5 = try values.decode(String.self, forKey: .route5)
+        route6 = try values.decode(String.self, forKey: .route6)
         entranceType = try values.decode(EntranceType.self, forKey: .entranceType)
         entry = try values.decode(String.self, forKey: .entry)
         exitOnly = try values.decode(String.self, forKey: .exitOnly)
