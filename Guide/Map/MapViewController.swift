@@ -47,7 +47,7 @@ class MapViewController: UIViewController {
             mapExit.title = exit.stationName
             mapExit.isDraggable = false
             if camera.zoom < 16 {
-                mapExit.snippet = "\(exit.route1) \(exit.route2) \(exit.route3) \(exit.route4) \(exit.route5) \(exit.route6)"
+                mapExit.snippet = "\(exit.route1) \(exit.route2) \(exit.route3) \(exit.route4) \(exit.route5) \(exit.route6) \(exit.route7) \(exit.route8) \(exit.route9) \(exit.route10)"
                 mapExit.position = CLLocationCoordinate2D(latitude: exit.stationLatitude, longitude: exit.stationLongitude)
             } else {
                 mapExit.position = CLLocationCoordinate2D(latitude: exit.latitude, longitude: exit.longitude)
