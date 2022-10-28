@@ -10,7 +10,6 @@
 		99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E62907518300A7D6B7 /* AppDelegate.swift */; };
 		99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */; };
 		99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1EA2907518300A7D6B7 /* MapViewController.swift */; };
-		99E0D1EE2907518300A7D6B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E0D1EC2907518300A7D6B7 /* Main.storyboard */; };
 		99E0D1F02907518400A7D6B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E0D1EF2907518400A7D6B7 /* Assets.xcassets */; };
 		99E0D1F32907518400A7D6B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E0D1F12907518400A7D6B7 /* LaunchScreen.storyboard */; };
 		99E0D1FE2907518400A7D6B7 /* GuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1FD2907518400A7D6B7 /* GuideTests.swift */; };
@@ -68,7 +67,6 @@
 		99E0D1E62907518300A7D6B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		99E0D1EA2907518300A7D6B7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		99E0D1ED2907518300A7D6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99E0D1EF2907518400A7D6B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99E0D1F22907518400A7D6B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99E0D1F42907518400A7D6B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 				99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */,
 				99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */,
 				99E0D2532909871600A7D6B7 /* Constants.swift */,
-				99E0D1EC2907518300A7D6B7 /* Main.storyboard */,
 				99E0D1EF2907518400A7D6B7 /* Assets.xcassets */,
 				99E0D1F12907518400A7D6B7 /* LaunchScreen.storyboard */,
 				99E0D24A2908289F00A7D6B7 /* subway.json */,
@@ -372,7 +369,6 @@
 				99E0D24B2908289F00A7D6B7 /* subway.json in Resources */,
 				99E0D1F32907518400A7D6B7 /* LaunchScreen.storyboard in Resources */,
 				99E0D1F02907518400A7D6B7 /* Assets.xcassets in Resources */,
-				99E0D1EE2907518300A7D6B7 /* Main.storyboard in Resources */,
 				99E0D246290754A600A7D6B7 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,14 +439,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		99E0D1EC2907518300A7D6B7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				99E0D1ED2907518300A7D6B7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		99E0D1F12907518400A7D6B7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -593,7 +581,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -627,7 +615,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
