@@ -8,8 +8,8 @@
 import Foundation
 
 class NetworkManager {
-    private let serviceStatusURL: URL? = URL(string: Constants.serviceStatusURLString)
-    private let elevatorEscalatorStatusURL: URL? = URL(string: Constants.elevatorEscalatorStatusURLString)
+    private let serviceStatusURL: URL? = URL(string: Constants.Endpoint.serviceStatusURLString)
+    private let elevatorEscalatorStatusURL: URL? = URL(string: Constants.Endpoint.elevatorEscalatorStatusURLString)
     private let session: URLSession = URLSession.shared
     private let apiKey: String = Constants.mtaAPIKey
     
@@ -45,7 +45,7 @@ class NetworkManager {
     func fetchElevatorEscalatorStatus() {
         guard let eesURL = elevatorEscalatorStatusURL else { return }
         var request = URLRequest(url: eesURL)
-        request.setValue(apiKey, forHTTPHeaderField: "x-api-key")
+        request.setValue(apiKey, forHTTPHeaderField: Constants.apiHeaderKeyString)
         let _ = session.dataTask(with: request) { stuff, response, error in
             
             guard let httpResponse = response as? HTTPURLResponse else { return }
@@ -65,4 +65,8 @@ class NetworkManager {
         }
             .resume()
     }
+    
+    // create enum to map network call to specific line
+    // build generic network around fetching data and drop in specific feed from enum
+    // display cells
 }

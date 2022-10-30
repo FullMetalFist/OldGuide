@@ -11,23 +11,16 @@ struct ServiceEntityModel: Decodable {
     
     let id: String
     let alert: Alert
-//    let headerText: HeaderText
-//    let descriptionText: DescriptionText
-//    let transitRealtimeAlert: TransitRealtimeAlert
     
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case alert = "alert"
-//        case headerText = "header_text"
-//        case descriptionText = "description_text"
-//        case transitRealtimeAlert = "transit_realtime.mercury_alert"
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)
         alert = try values.decode(Alert.self, forKey: .alert)
-        
     }
 }
 
@@ -51,11 +44,19 @@ struct Alert: Decodable {
 }
 
 struct HeaderText: Decodable {
-    let textLanguagePair: [[String: String]]
+    let translationDict: TranslationDict
+    
+    private enum CodingKeys: String, CodingKey {
+        case translationDict = "translation"
+    }
 }
 
 struct DescriptionText: Decodable {
-    let textLanguagePair: [[String: String]]
+    let translationDict: TranslationDict
+    
+    private enum CodingKeys: String, CodingKey {
+        case translationDict = "translation"
+    }
 }
 
 struct TransitRealtimeAlert: Decodable {
@@ -75,7 +76,15 @@ struct TransitRealtimeAlert: Decodable {
 }
 
 struct HumanReadableActivePeriod: Decodable {
-    let textLanguagePair: [[String: String]]
+    let translationDict: TranslationDict
+    
+    private enum CodingKeys: String, CodingKey {
+        case translationDict = "translation"
+    }
+}
+
+struct TranslationDict: Decodable {
+    let translation: [String: Array<TextLanguage>]
 }
 
 struct TextLanguage: Decodable {
