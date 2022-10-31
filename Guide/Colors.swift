@@ -48,6 +48,33 @@ class GuideColor {
     static func setColorFor7() -> UIColor {
         return UIColor(red: 0.725, green: 0.2, blue: 0.679, alpha: 1.0)
     }
+    
+    static func chooseColorFor(line: String) -> UIColor {
+        switch line.first {
+        case "A", "C", "E":
+            return setColorForACE()
+        case "B", "D", "F", "M":
+            return setColorForBDFM()
+        case "G":
+            return setColorForG()
+        case "J", "Z":
+            return setColorForJZ()
+        case "L":
+            return setColorForL()
+        case "N", "Q", "R", "W":
+            return setColorForNQRW()
+        case "S":
+            return setColorForS()
+        case "1", "2", "3":
+            return setColorFor123()
+        case "4", "5", "6":
+            return setColorFor456()
+        case "7":
+            return setColorFor7()
+        default:
+            return .black
+        }
+    }
 }
 
 /*

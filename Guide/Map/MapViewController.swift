@@ -24,6 +24,7 @@ class MapViewController: UIViewController {
     lazy var mapToggleButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
         button.setTitle("Toggle Map", for: .normal)
         button.titleLabel?.backgroundColor = .black
         return button
@@ -32,7 +33,26 @@ class MapViewController: UIViewController {
     lazy var elevatorEscalatorStatusButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
         button.setTitle("Status", for: .normal)
+        button.titleLabel?.backgroundColor = .black
+        return button
+    }()
+    
+    lazy var serviceStatusButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.setTitle("Service", for: .normal)
+        button.titleLabel?.backgroundColor = .black
+        return button
+    }()
+    
+    lazy var subwayTimesButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        button.setTitle("Times", for: .normal)
         button.titleLabel?.backgroundColor = .black
         return button
     }()
@@ -60,7 +80,7 @@ class MapViewController: UIViewController {
         }
         
         let bounds = GMSCoordinateBounds.init()
-        let camera = GMSCameraPosition.camera(withLatitude: 40.7128, longitude: -74.0060, zoom: 17.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 40.775036, longitude: -73.912034, zoom: 17.0)
         mapView.camera = camera
         self.view.addSubview(mapView)
         
@@ -81,7 +101,8 @@ class MapViewController: UIViewController {
             } else {
                 mapExit.position = CLLocationCoordinate2D(latitude: exit.latitude, longitude: exit.longitude)
                 mapExit.snippet = "\(exit.route1) \(exit.route2) \(exit.route3) \(exit.route4) \(exit.route5) \(exit.route6) " + exit.entranceType.rawValue
-                mapExit.icon = GMSMarker.markerImage(with: GuideColor.setColorFor7())
+                let imgColor = GMSMarker.markerImage(with: GuideColor.chooseColorFor(line: exit.route1))
+                mapExit.icon = imgColor
             }
             
             mapExit.map = mapView
@@ -91,8 +112,7 @@ class MapViewController: UIViewController {
     
     private func setupConstraints() {
         view.backgroundColor = .white
-        mapToggleButton.backgroundColor = .white
-        elevatorEscalatorStatusButton.backgroundColor = .white
+        
         mapView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16).isActive = true
         mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
@@ -113,6 +133,14 @@ class MapViewController: UIViewController {
     
     @objc func elevatorEscalatorStatusButtonTapped(_ sender: UIButton) {
         print("elevatorEscalatorStatusButtonTapped")
+    }
+    
+    @objc func serviceStatusButtonTapped(_ sender: UIButton) {
+        print("serviceStatusButtonTapped")
+    }
+    
+    @objc func subwayTimesButtonTapped(_ sender: UIButton) {
+        print("subwayTimesButtonTapped")
     }
 }
 
