@@ -44,6 +44,7 @@
 		99E0D2562909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D2552909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift */; };
 		99E0D2592909CFE300A7D6B7 /* ServiceEntityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D2582909CFE300A7D6B7 /* ServiceEntityModel.swift */; };
 		99E0D25B290F116500A7D6B7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D25A290F116500A7D6B7 /* Colors.swift */; };
+		99E0D25D2911848100A7D6B7 /* ExitCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		99E0D2552909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevatorEscalatorStatusModel.swift; sourceTree = "<group>"; };
 		99E0D2582909CFE300A7D6B7 /* ServiceEntityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEntityModel.swift; sourceTree = "<group>"; };
 		99E0D25A290F116500A7D6B7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitCalloutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				99E0D2482908167A00A7D6B7 /* MapViewModel.swift */,
 				99E0D24C29082A6300A7D6B7 /* ExitModel.swift */,
 				99E0D1EA2907518300A7D6B7 /* MapViewController.swift */,
+				99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				99E0D2592909CFE300A7D6B7 /* ServiceEntityModel.swift in Sources */,
 				99E0D2562909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift in Sources */,
 				99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */,
+				99E0D25D2911848100A7D6B7 /* ExitCalloutView.swift in Sources */,
 				99E0D24D29082A6300A7D6B7 /* ExitModel.swift in Sources */,
 				99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */,
 				99E0D2492908167A00A7D6B7 /* MapViewModel.swift in Sources */,

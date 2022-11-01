@@ -12,6 +12,8 @@ import GoogleMaps
 class MapViewController: UIViewController {
     
     var exits: [Exit] = []
+    var markers: [GMSMarker] = []
+    var stations: [GMSMarker] = []
     private var userCoordinate = CLLocationCoordinate2D(latitude: 1, longitude: 1)
     private let locationManager = CLLocationManager()
     
@@ -81,6 +83,7 @@ class MapViewController: UIViewController {
         
         let bounds = GMSCoordinateBounds.init()
         let camera = GMSCameraPosition.camera(withLatitude: 40.775036, longitude: -73.912034, zoom: 17.0)
+        mapView.delegate = self
         mapView.camera = camera
         self.view.addSubview(mapView)
         
@@ -101,11 +104,13 @@ class MapViewController: UIViewController {
             } else {
                 mapExit.position = CLLocationCoordinate2D(latitude: exit.latitude, longitude: exit.longitude)
                 mapExit.snippet = "\(exit.route1) \(exit.route2) \(exit.route3) \(exit.route4) \(exit.route5) \(exit.route6) " + exit.entranceType.rawValue
+                
                 let imgColor = GMSMarker.markerImage(with: GuideColor.chooseColorFor(line: exit.route1))
                 mapExit.icon = imgColor
             }
-            
+            markers.append(mapExit)
             mapExit.map = mapView
+            
             return mapExit
         }
     }
@@ -170,5 +175,13 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: GMSMapViewDelegate {
-//    func 
+}
+
+extension MapViewController: GMSIndoorDisplayDelegate {
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        if markers.contains(marker) {
+            return ExitCalloutView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        }
+        return nil
+    }
 }
