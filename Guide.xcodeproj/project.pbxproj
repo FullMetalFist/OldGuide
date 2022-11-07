@@ -45,6 +45,7 @@
 		99E0D2592909CFE300A7D6B7 /* ServiceEntityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D2582909CFE300A7D6B7 /* ServiceEntityModel.swift */; };
 		99E0D25B290F116500A7D6B7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D25A290F116500A7D6B7 /* Colors.swift */; };
 		99E0D25D2911848100A7D6B7 /* ExitCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */; };
+		99E0D25F2911DBB100A7D6B7 /* SubwayTileLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D25E2911DBB100A7D6B7 /* SubwayTileLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		99E0D2582909CFE300A7D6B7 /* ServiceEntityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEntityModel.swift; sourceTree = "<group>"; };
 		99E0D25A290F116500A7D6B7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitCalloutView.swift; sourceTree = "<group>"; };
+		99E0D25E2911DBB100A7D6B7 /* SubwayTileLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayTileLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 				99E0D24C29082A6300A7D6B7 /* ExitModel.swift */,
 				99E0D1EA2907518300A7D6B7 /* MapViewController.swift */,
 				99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */,
+				99E0D25E2911DBB100A7D6B7 /* SubwayTileLabel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99E0D25029084EEA00A7D6B7 /* NetworkManager.swift in Sources */,
+				99E0D25F2911DBB100A7D6B7 /* SubwayTileLabel.swift in Sources */,
 				99E0D25B290F116500A7D6B7 /* Colors.swift in Sources */,
 				99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */,
 				99E0D2592909CFE300A7D6B7 /* ServiceEntityModel.swift in Sources */,
@@ -586,10 +590,10 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Guide/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -620,10 +624,10 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Guide/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
