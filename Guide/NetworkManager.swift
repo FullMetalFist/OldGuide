@@ -54,7 +54,7 @@ class NetworkManager {
                 if let stuff = stuff {
                     
                     do {
-                        let bunch = try JSONDecoder().decode([ElevatorEscalatorStatusModel].self, from: stuff)
+                        let _ = try JSONDecoder().decode([ElevatorEscalatorStatusModel].self, from: stuff)
 
                     }
                     catch {

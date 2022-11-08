@@ -590,7 +590,6 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Guide/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -602,7 +601,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = FullMetalFistApps.Guide;
+				PRODUCT_BUNDLE_IDENTIFIER = FullMetalFistApps.TransitGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -624,7 +623,6 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Guide/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -636,7 +634,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = FullMetalFistApps.Guide;
+				PRODUCT_BUNDLE_IDENTIFIER = FullMetalFistApps.TransitGuide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
