@@ -14,8 +14,8 @@ class MapViewController: UIViewController {
     var exits: [Exit] = []
     var markers: [GMSMarker] = []
     var stations: [GMSMarker] = []
+    private let mapViewModel = MapViewModel()
     private let locationManager = CLLocationManager()
-    private let camera = GMSCameraPosition.camera(withLatitude: 40.775036, longitude: -73.912034, zoom: 15.0)
 
     
     lazy var mapView: GMSMapView = {
@@ -68,10 +68,9 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let mapViewModel = MapViewModel()
         locationManager.delegate = self
-        
+        mapView.delegate = self
+
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
         }
@@ -79,6 +78,18 @@ class MapViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
         }
 
+        addTargets()
+        setupConstraints()
+    }
+    
+    private func addTargets() {
+        mapToggleButton.addTarget(self, action: #selector(mapToggleButtonTapped(_:)), for: .touchUpInside)
+        elevatorEscalatorStatusButton.addTarget(self, action: #selector(elevatorEscalatorStatusButtonTapped(_:)), for: .touchUpInside)
+        serviceStatusButton.addTarget(self, action: #selector(serviceStatusButtonTapped(_:)), for: .touchUpInside)
+        subwayTimesButton.addTarget(self, action: #selector(subwayTimesButtonTapped(_:)), for: .touchUpInside)
+    }
+    
+    private func fetchExits() {
         mapViewModel.fetchExitLocations { result in
             switch result {
             case .success(let exits):
@@ -88,27 +99,6 @@ class MapViewController: UIViewController {
             }
         }
         
-        mapView.delegate = self
-        
-        
-        mapToggleButton.addTarget(self, action: #selector(mapToggleButtonTapped(_:)), for: .touchUpInside)
-        elevatorEscalatorStatusButton.addTarget(self, action: #selector(elevatorEscalatorStatusButtonTapped(_:)), for: .touchUpInside)
-        
-
-        setupConstraints()
-//        fetchExits()
-    }
-    
-    private func fetchUserLocation(_ location: CLLocation) {
-        mapView.camera = GMSCameraPosition(target: location.coordinate,
-                                           zoom: 8,
-                                           bearing: 0,
-                                           viewingAngle: 0)
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
-    }
-    
-    private func fetchExits() {
         let _ = exits.map { exit in
             let mapExit = GMSMarker()
             mapExit.title = exit.stationName
@@ -133,6 +123,12 @@ class MapViewController: UIViewController {
         }
     }
     
+    private func setUserLocationOnMap(_ location: CLLocation) {
+        mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), zoom: 5, bearing: .zero, viewingAngle: 0)
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+    }
+    
     private func setupConstraints() {
         view.backgroundColor = .white
         
@@ -141,22 +137,30 @@ class MapViewController: UIViewController {
         self.view.addSubview(mapView)
         self.view.addSubview(mapToggleButton)
         self.view.addSubview(elevatorEscalatorStatusButton)
+        self.view.addSubview(serviceStatusButton)
+        self.view.addSubview(subwayTimesButton)
         self.view.addSubview(tempBox)
         
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150).isActive = true
         mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         
-        mapToggleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36).isActive = true
+        mapToggleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26).isActive = true
         mapToggleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         mapToggleButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
-        elevatorEscalatorStatusButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36).isActive = true
+        elevatorEscalatorStatusButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26).isActive = true
         elevatorEscalatorStatusButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         elevatorEscalatorStatusButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
-
+        serviceStatusButton.bottomAnchor.constraint(equalTo: elevatorEscalatorStatusButton.topAnchor, constant: 8).isActive = true
+        serviceStatusButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        serviceStatusButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        subwayTimesButton.bottomAnchor.constraint(equalTo: mapToggleButton.topAnchor, constant: 8).isActive = true
+        subwayTimesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        subwayTimesButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
     @objc func mapToggleButtonTapped(_ sender: UIButton) {
@@ -182,30 +186,31 @@ extension MapViewController: CLLocationManagerDelegate {
         let authStatus = manager.authorizationStatus
         switch authStatus {
         case .authorizedWhenInUse, .authorizedAlways:
-            print("thanks")
-            guard let location = manager.location else { return }
-            fetchUserLocation(location)
+            print("good 2 go")
+            locationManager.startUpdatingLocation()
+            if let location = locationManager.location {
+                setUserLocationOnMap(location)
+
+            }
             return
         case .denied, .restricted, .notDetermined:
-            print("could be trouble")
+            print("requesting again")
             locationManager.requestWhenInUseAuthorization()
             return
         default:
-            print("what is this")
-            return
+            print("unknown")
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.first else { return }
-        
-        fetchUserLocation(location)
+        if let location = locations.last {
+            setUserLocationOnMap(location)
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("we need user location")
+        print("user location failed")
         print("error: \(error)")
-        locationManager.requestWhenInUseAuthorization()
     }
 }
 
