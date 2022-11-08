@@ -96,7 +96,7 @@ class MapViewController: UIViewController {
         
 
         setupConstraints()
-        fetchExits()
+//        fetchExits()
     }
     
     private func fetchUserLocation(_ location: CLLocation) {
@@ -183,7 +183,8 @@ extension MapViewController: CLLocationManagerDelegate {
         switch authStatus {
         case .authorizedWhenInUse, .authorizedAlways:
             print("thanks")
-            
+            guard let location = manager.location else { return }
+            fetchUserLocation(location)
             return
         case .denied, .restricted, .notDetermined:
             print("could be trouble")
