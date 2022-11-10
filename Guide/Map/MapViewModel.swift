@@ -35,6 +35,5 @@ class MapViewModel {
     
     func fetchAll() {
         networkManager.fetchElevatorEscalatorStatus()
-        networkManager.fetchServiceStatus()
     }
 }

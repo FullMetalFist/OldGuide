@@ -24,7 +24,6 @@ struct Exit: Decodable {
     let route9: String
     let route10: String
     let route11: String
-    var routes: [String] = []
     let entranceType: EntranceType
     let entry: String
     let exitOnly: String

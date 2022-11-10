@@ -157,6 +157,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99936BFE291C04CD00D6817C /* Exit */ = {
+			isa = PBXGroup;
+			children = (
+				99E0D24C29082A6300A7D6B7 /* ExitModel.swift */,
+				99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */,
+			);
+			path = Exit;
+			sourceTree = "<group>";
+		};
 		99E0D1DA2907518300A7D6B7 = {
 			isa = PBXGroup;
 			children = (
@@ -247,9 +256,8 @@
 			isa = PBXGroup;
 			children = (
 				99E0D2482908167A00A7D6B7 /* MapViewModel.swift */,
-				99E0D24C29082A6300A7D6B7 /* ExitModel.swift */,
 				99E0D1EA2907518300A7D6B7 /* MapViewController.swift */,
-				99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */,
+				99936BFE291C04CD00D6817C /* Exit */,
 				99E0D25E2911DBB100A7D6B7 /* SubwayTileLabel.swift */,
 			);
 			path = Map;

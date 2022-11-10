@@ -13,7 +13,6 @@ class MapViewController: UIViewController {
     
     var exits: [Exit] = []
     var markers: [GMSMarker] = []
-    var stations: [GMSMarker] = []
     private let mapViewModel = MapViewModel()
     private let locationManager = CLLocationManager()
 
@@ -70,7 +69,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         locationManager.delegate = self
         mapView.delegate = self
-
+        
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestLocation()
         }
@@ -80,6 +79,7 @@ class MapViewController: UIViewController {
 
         addTargets()
         setupConstraints()
+        fetchExits()
     }
     
     private func addTargets() {
@@ -90,6 +90,7 @@ class MapViewController: UIViewController {
     }
     
     private func fetchExits() {
+        
         mapViewModel.fetchExitLocations { result in
             switch result {
             case .success(let exits):
@@ -98,24 +99,14 @@ class MapViewController: UIViewController {
                 print("\(error)")
             }
         }
-        
+        mapView.clear()
         let _ = exits.map { exit in
             let mapExit = GMSMarker()
             mapExit.title = exit.stationName
             mapExit.isDraggable = false
-            if mapView.camera.zoom < 16 {
 
-                mapExit.snippet = "\(exit.route1)\(exit.route2)\(exit.route3)\(exit.route4)\(exit.route5)\(exit.route6)\(exit.route7)\(exit.route8)\(exit.route9)\(exit.route10)\(exit.route11) "
-                mapExit.position = CLLocationCoordinate2D(latitude: exit.stationLatitude, longitude: exit.stationLongitude)
-                let imgColor = GMSMarker.markerImage(with: GuideColor.chooseColorFor(line: exit.route1))
-                mapExit.icon = imgColor
-            } else {
-                mapExit.position = CLLocationCoordinate2D(latitude: exit.latitude, longitude: exit.longitude)
-                mapExit.snippet = "\(exit.route1)\(exit.route2)\(exit.route3)\(exit.route4)\(exit.route5)\(exit.route6)\(exit.route7)\(exit.route8)\(exit.route9)\(exit.route10)\(exit.route11) " + exit.entranceType.rawValue
-
-                let imgColor = GMSMarker.markerImage(with: GuideColor.chooseColorFor(line: exit.route1))
-                mapExit.icon = imgColor
-            }
+            exitLevel(exit, marker: mapExit)
+            
             markers.append(mapExit)
             mapExit.map = mapView
 
@@ -123,8 +114,23 @@ class MapViewController: UIViewController {
         }
     }
     
+    private func stationLevel(_ exit: Exit, marker: GMSMarker) {
+        marker.snippet = "\(exit.route1)\(exit.route2)\(exit.route3)\(exit.route4)\(exit.route5)\(exit.route6)\(exit.route7)\(exit.route8)\(exit.route9)\(exit.route10)\(exit.route11) "
+        marker.position = CLLocationCoordinate2D(latitude: exit.stationLatitude, longitude: exit.stationLongitude)
+        let imgColor = GMSMarker.markerImage(with: GuideColor.chooseColorFor(line: exit.route1))
+        marker.icon = imgColor
+    }
+    
+    private func exitLevel(_ exit: Exit, marker: GMSMarker) {
+        marker.position = CLLocationCoordinate2D(latitude: exit.latitude, longitude: exit.longitude)
+        marker.snippet = "\(exit.route1)\(exit.route2)\(exit.route3)\(exit.route4)\(exit.route5)\(exit.route6)\(exit.route7)\(exit.route8)\(exit.route9)\(exit.route10)\(exit.route11) " + exit.entranceType.rawValue
+
+        let imgColor = GMSMarker.markerImage(with: GuideColor.chooseColorFor(line: exit.route1))
+        marker.icon = imgColor
+    }
+    
     private func setUserLocationOnMap(_ location: CLLocation) {
-        mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), zoom: 5, bearing: .zero, viewingAngle: 0)
+        mapView.camera = GMSCameraPosition(target: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), zoom: 19, bearing: .zero, viewingAngle: 0)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
     }
@@ -157,10 +163,12 @@ class MapViewController: UIViewController {
         serviceStatusButton.bottomAnchor.constraint(equalTo: elevatorEscalatorStatusButton.topAnchor, constant: 8).isActive = true
         serviceStatusButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         serviceStatusButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        serviceStatusButton.isHidden = true
         
         subwayTimesButton.bottomAnchor.constraint(equalTo: mapToggleButton.topAnchor, constant: 8).isActive = true
         subwayTimesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         subwayTimesButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        subwayTimesButton.isHidden = true
     }
     
     @objc func mapToggleButtonTapped(_ sender: UIButton) {
@@ -190,7 +198,6 @@ extension MapViewController: CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
             if let location = locationManager.location {
                 setUserLocationOnMap(location)
-
             }
             return
         case .denied, .restricted, .notDetermined:
