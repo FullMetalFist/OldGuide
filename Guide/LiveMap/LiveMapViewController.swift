@@ -6,24 +6,33 @@
 //
 
 import UIKit
+import WebKit
 
 class LiveMapViewController: UIViewController {
 
+    lazy var siteView: WKWebView = {
+        let web = WKWebView()
+        web.translatesAutoresizingMaskIntoConstraints = false
+        return web
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupViews()
+        guard let url = URL(string: Constants.Endpoint.liveSystemMapURLString) else { return }
+        let request = URLRequest(url: url)
+        siteView.load(request)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupViews() {
+        view.addSubview(siteView)
+        siteView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        siteView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        siteView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        siteView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
-    */
+}
 
+extension LiveMapViewController: WKUIDelegate {
+    
 }

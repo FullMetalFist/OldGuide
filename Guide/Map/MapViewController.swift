@@ -29,10 +29,16 @@ class MapViewController: UIViewController {
         return UIStackView()
     }()
     
+    lazy var distanceLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     lazy var mapToggleButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
+        button.backgroundColor = .black
         button.setTitle("Toggle Map", for: .normal)
         button.titleLabel?.backgroundColor = .black
         return button
@@ -41,7 +47,7 @@ class MapViewController: UIViewController {
     lazy var elevatorEscalatorStatusButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
+        button.backgroundColor = .black
         button.setTitle("Status", for: .normal)
         button.titleLabel?.backgroundColor = .black
         return button
@@ -50,7 +56,7 @@ class MapViewController: UIViewController {
     lazy var serviceStatusButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
+        button.backgroundColor = .black
         button.setTitle("Service", for: .normal)
         button.titleLabel?.backgroundColor = .black
         return button
@@ -59,7 +65,7 @@ class MapViewController: UIViewController {
     lazy var subwayTimesButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
+        button.backgroundColor = .black
         button.setTitle("Times", for: .normal)
         button.titleLabel?.backgroundColor = .black
         return button
@@ -91,21 +97,29 @@ class MapViewController: UIViewController {
     
     private func fetchExits() {
         
-        mapViewModel.fetchExitLocations { result in
-            switch result {
-            case .success(let exits):
-                self.exits = exits
-            case .error(let error):
-                print("\(error)")
+        if exits.isEmpty {
+            mapViewModel.fetchExitLocations { result in
+                switch result {
+                case .success(let exits):
+                    self.exits = exits
+                case .error(let error):
+                    print("\(error)")
+                }
             }
         }
+        
         mapView.clear()
         let _ = exits.map { exit in
             let mapExit = GMSMarker()
             mapExit.title = exit.stationName
             mapExit.isDraggable = false
-
-            exitLevel(exit, marker: mapExit)
+            
+            if mapView.camera.zoom > 11 {
+                stationLevel(exit, marker: mapExit)
+            }
+            else {
+                exitLevel(exit, marker: mapExit)
+            }
             
             markers.append(mapExit)
             mapExit.map = mapView
@@ -138,19 +152,21 @@ class MapViewController: UIViewController {
     private func setupConstraints() {
         view.backgroundColor = .white
         
-        let tempBox = ExitCalloutView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        tempBox.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapView)
+        self.view.addSubview(distanceLabel)
         self.view.addSubview(mapToggleButton)
         self.view.addSubview(elevatorEscalatorStatusButton)
         self.view.addSubview(serviceStatusButton)
         self.view.addSubview(subwayTimesButton)
-        self.view.addSubview(tempBox)
         
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150).isActive = true
         mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        distanceLabel.topAnchor.constraint(equalTo: mapView.bottomAnchor).isActive = true
+        distanceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        distanceLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         
         mapToggleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26).isActive = true
         mapToggleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
@@ -163,12 +179,10 @@ class MapViewController: UIViewController {
         serviceStatusButton.bottomAnchor.constraint(equalTo: elevatorEscalatorStatusButton.topAnchor, constant: 8).isActive = true
         serviceStatusButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         serviceStatusButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        serviceStatusButton.isHidden = true
         
         subwayTimesButton.bottomAnchor.constraint(equalTo: mapToggleButton.topAnchor, constant: 8).isActive = true
         subwayTimesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         subwayTimesButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        subwayTimesButton.isHidden = true
     }
     
     @objc func mapToggleButtonTapped(_ sender: UIButton) {
@@ -184,6 +198,8 @@ class MapViewController: UIViewController {
     }
     
     @objc func subwayTimesButtonTapped(_ sender: UIButton) {
+        let lmvc = LiveMapViewController()
+        navigationController?.pushViewController(lmvc, animated: true)
         print("subwayTimesButtonTapped")
     }
 }
@@ -222,7 +238,18 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        //
+    }
     
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard let userLocation = locationManager.location
+               else { return false }
+        let markLocation = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
+        let meters = userLocation.distance(from: markLocation)
+        distanceLabel.text = String(format: "%.2f", meters)
+        return true
+    }
 }
 
 extension MapViewController: GMSIndoorDisplayDelegate {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99936C01291D5CA900D6817C /* LiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99936C00291D5CA900D6817C /* LiveMapViewController.swift */; };
 		99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E62907518300A7D6B7 /* AppDelegate.swift */; };
 		99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */; };
 		99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1EA2907518300A7D6B7 /* MapViewController.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		99936C00291D5CA900D6817C /* LiveMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMapViewController.swift; sourceTree = "<group>"; };
 		99E0D1E32907518300A7D6B7 /* Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E0D1E62907518300A7D6B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,14 @@
 			path = Exit;
 			sourceTree = "<group>";
 		};
+		99936BFF291D5BF300D6817C /* LiveMap */ = {
+			isa = PBXGroup;
+			children = (
+				99936C00291D5CA900D6817C /* LiveMapViewController.swift */,
+			);
+			path = LiveMap;
+			sourceTree = "<group>";
+		};
 		99E0D1DA2907518300A7D6B7 = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 				99E0D2572909CFC800A7D6B7 /* ServiceStatus */,
 				99E0D24E29084DED00A7D6B7 /* Outage */,
 				99E0D247290814A100A7D6B7 /* Map */,
+				99936BFF291D5BF300D6817C /* LiveMap */,
 				99E0D1E62907518300A7D6B7 /* AppDelegate.swift */,
 				99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */,
 				99E0D24F29084EEA00A7D6B7 /* NetworkManager.swift */,
@@ -414,6 +425,7 @@
 				99E0D25029084EEA00A7D6B7 /* NetworkManager.swift in Sources */,
 				99E0D25F2911DBB100A7D6B7 /* SubwayTileLabel.swift in Sources */,
 				99E0D25B290F116500A7D6B7 /* Colors.swift in Sources */,
+				99936C01291D5CA900D6817C /* LiveMapViewController.swift in Sources */,
 				99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */,
 				99E0D2592909CFE300A7D6B7 /* ServiceEntityModel.swift in Sources */,
 				99E0D2562909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift in Sources */,
