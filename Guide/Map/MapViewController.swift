@@ -183,6 +183,15 @@ class MapViewController: UIViewController {
         subwayTimesButton.bottomAnchor.constraint(equalTo: mapToggleButton.topAnchor, constant: 8).isActive = true
         subwayTimesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         subwayTimesButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+//        do {
+//            if let url = mapViewModel.passCustomMapURL() {
+//                mapView.mapStyle = try GMSMapStyle(contentsOfFileURL: url)
+//            }
+//        }
+//        catch {
+//            print("\(error.localizedDescription)")
+//        }
+        
     }
     
     @objc func mapToggleButtonTapped(_ sender: UIButton) {

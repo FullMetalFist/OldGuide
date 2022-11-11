@@ -33,6 +33,11 @@ class MapViewModel {
         }
     }
     
+    func passCustomMapURL() -> URL? {
+        guard let styleURL = Bundle.main.url(forResource: "guideUserMap000", withExtension: "json") else { return nil }
+        return styleURL
+    }
+    
     func fetchAll() {
         networkManager.fetchElevatorEscalatorStatus()
     }

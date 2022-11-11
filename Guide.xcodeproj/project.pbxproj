@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		99936C01291D5CA900D6817C /* LiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99936C00291D5CA900D6817C /* LiveMapViewController.swift */; };
+		99936C05291DC69C00D6817C /* guideUserMap000.json in Resources */ = {isa = PBXBuildFile; fileRef = 99936C04291DC69C00D6817C /* guideUserMap000.json */; };
 		99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E62907518300A7D6B7 /* AppDelegate.swift */; };
 		99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */; };
 		99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1EA2907518300A7D6B7 /* MapViewController.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		99936C00291D5CA900D6817C /* LiveMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMapViewController.swift; sourceTree = "<group>"; };
+		99936C04291DC69C00D6817C /* guideUserMap000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = guideUserMap000.json; sourceTree = SOURCE_ROOT; };
 		99E0D1E32907518300A7D6B7 /* Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E0D1E62907518300A7D6B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				99E0D25A290F116500A7D6B7 /* Colors.swift */,
 				99E0D1EF2907518400A7D6B7 /* Assets.xcassets */,
 				99E0D1F12907518400A7D6B7 /* LaunchScreen.storyboard */,
+				99936C04291DC69C00D6817C /* guideUserMap000.json */,
 				99E0D24A2908289F00A7D6B7 /* subway.json */,
 				99E0D1F42907518400A7D6B7 /* Info.plist */,
 			);
@@ -396,6 +399,7 @@
 			files = (
 				99E0D24B2908289F00A7D6B7 /* subway.json in Resources */,
 				99E0D1F32907518400A7D6B7 /* LaunchScreen.storyboard in Resources */,
+				99936C05291DC69C00D6817C /* guideUserMap000.json in Resources */,
 				99E0D1F02907518400A7D6B7 /* Assets.xcassets in Resources */,
 				99E0D246290754A600A7D6B7 /* GoogleMaps.bundle in Resources */,
 			);
