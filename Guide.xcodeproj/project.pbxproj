@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		99936C01291D5CA900D6817C /* LiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99936C00291D5CA900D6817C /* LiveMapViewController.swift */; };
 		99936C05291DC69C00D6817C /* guideUserMap000.json in Resources */ = {isa = PBXBuildFile; fileRef = 99936C04291DC69C00D6817C /* guideUserMap000.json */; };
+		99936C08291F09B100D6817C /* GoogleMapsUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 99936C07291F09B100D6817C /* GoogleMapsUtils */; };
+		99936C0B291F10A700D6817C /* PDFMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99936C0A291F10A700D6817C /* PDFMapViewController.swift */; };
+		99936C0D2920117300D6817C /* Subway Map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 99936C0C2920117300D6817C /* Subway Map.pdf */; };
+		99936C0F2920117F00D6817C /* Night Subway Map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 99936C0E2920117F00D6817C /* Night Subway Map.pdf */; };
 		99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E62907518300A7D6B7 /* AppDelegate.swift */; };
 		99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */; };
 		99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1EA2907518300A7D6B7 /* MapViewController.swift */; };
@@ -70,6 +74,9 @@
 /* Begin PBXFileReference section */
 		99936C00291D5CA900D6817C /* LiveMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMapViewController.swift; sourceTree = "<group>"; };
 		99936C04291DC69C00D6817C /* guideUserMap000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = guideUserMap000.json; sourceTree = SOURCE_ROOT; };
+		99936C0A291F10A700D6817C /* PDFMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFMapViewController.swift; sourceTree = "<group>"; };
+		99936C0C2920117300D6817C /* Subway Map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Subway Map.pdf"; path = "Assets.xcassets/Subway Map.imageset/Subway Map.pdf"; sourceTree = "<group>"; };
+		99936C0E2920117F00D6817C /* Night Subway Map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Night Subway Map.pdf"; path = "Assets.xcassets/Night Subway Map.imageset/Night Subway Map.pdf"; sourceTree = "<group>"; };
 		99E0D1E32907518300A7D6B7 /* Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E0D1E62907518300A7D6B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +143,7 @@
 				99E0D22A2907535800A7D6B7 /* OpenGLES.framework in Frameworks */,
 				99E0D2282907535000A7D6B7 /* QuartzCore.framework in Frameworks */,
 				99E0D2262907534900A7D6B7 /* SystemConfiguration.framework in Frameworks */,
+				99936C08291F09B100D6817C /* GoogleMapsUtils in Frameworks */,
 				99E0D2242907534200A7D6B7 /* UIKit.framework in Frameworks */,
 				99E0D21E290752BA00A7D6B7 /* GoogleMapsCore.xcframework in Frameworks */,
 				99E0D21C290752BA00A7D6B7 /* GoogleMapsBase.xcframework in Frameworks */,
@@ -178,6 +186,14 @@
 			path = LiveMap;
 			sourceTree = "<group>";
 		};
+		99936C09291F108A00D6817C /* PDFMap */ = {
+			isa = PBXGroup;
+			children = (
+				99936C0A291F10A700D6817C /* PDFMapViewController.swift */,
+			);
+			path = PDFMap;
+			sourceTree = "<group>";
+		};
 		99E0D1DA2907518300A7D6B7 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +220,7 @@
 		99E0D1E52907518300A7D6B7 /* Guide */ = {
 			isa = PBXGroup;
 			children = (
+				99936C09291F108A00D6817C /* PDFMap */,
 				99E0D2572909CFC800A7D6B7 /* ServiceStatus */,
 				99E0D24E29084DED00A7D6B7 /* Outage */,
 				99E0D247290814A100A7D6B7 /* Map */,
@@ -216,6 +233,8 @@
 				99E0D1EF2907518400A7D6B7 /* Assets.xcassets */,
 				99E0D1F12907518400A7D6B7 /* LaunchScreen.storyboard */,
 				99936C04291DC69C00D6817C /* guideUserMap000.json */,
+				99936C0C2920117300D6817C /* Subway Map.pdf */,
+				99936C0E2920117F00D6817C /* Night Subway Map.pdf */,
 				99E0D24A2908289F00A7D6B7 /* subway.json */,
 				99E0D1F42907518400A7D6B7 /* Info.plist */,
 			);
@@ -309,6 +328,9 @@
 			dependencies = (
 			);
 			name = Guide;
+			packageProductDependencies = (
+				99936C07291F09B100D6817C /* GoogleMapsUtils */,
+			);
 			productName = Guide;
 			productReference = 99E0D1E32907518300A7D6B7 /* Guide.app */;
 			productType = "com.apple.product-type.application";
@@ -381,6 +403,9 @@
 				Base,
 			);
 			mainGroup = 99E0D1DA2907518300A7D6B7;
+			packageReferences = (
+				99936C06291F09B100D6817C /* XCRemoteSwiftPackageReference "google-maps-ios-utils" */,
+			);
 			productRefGroup = 99E0D1E42907518300A7D6B7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -400,6 +425,8 @@
 				99E0D24B2908289F00A7D6B7 /* subway.json in Resources */,
 				99E0D1F32907518400A7D6B7 /* LaunchScreen.storyboard in Resources */,
 				99936C05291DC69C00D6817C /* guideUserMap000.json in Resources */,
+				99936C0F2920117F00D6817C /* Night Subway Map.pdf in Resources */,
+				99936C0D2920117300D6817C /* Subway Map.pdf in Resources */,
 				99E0D1F02907518400A7D6B7 /* Assets.xcassets in Resources */,
 				99E0D246290754A600A7D6B7 /* GoogleMaps.bundle in Resources */,
 			);
@@ -432,6 +459,7 @@
 				99936C01291D5CA900D6817C /* LiveMapViewController.swift in Sources */,
 				99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */,
 				99E0D2592909CFE300A7D6B7 /* ServiceEntityModel.swift in Sources */,
+				99936C0B291F10A700D6817C /* PDFMapViewController.swift in Sources */,
 				99E0D2562909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift in Sources */,
 				99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */,
 				99E0D25D2911848100A7D6B7 /* ExitCalloutView.swift in Sources */,
@@ -784,6 +812,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		99936C06291F09B100D6817C /* XCRemoteSwiftPackageReference "google-maps-ios-utils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/google-maps-ios-utils.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		99936C07291F09B100D6817C /* GoogleMapsUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99936C06291F09B100D6817C /* XCRemoteSwiftPackageReference "google-maps-ios-utils" */;
+			productName = GoogleMapsUtils;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 99E0D1DB2907518300A7D6B7 /* Project object */;
 }

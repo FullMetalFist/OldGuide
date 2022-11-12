@@ -39,7 +39,7 @@ class MapViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .black
-        button.setTitle("Toggle Map", for: .normal)
+        button.setTitle("PDF Map", for: .normal)
         button.titleLabel?.backgroundColor = .black
         return button
     }()
@@ -195,7 +195,8 @@ class MapViewController: UIViewController {
     }
     
     @objc func mapToggleButtonTapped(_ sender: UIButton) {
-        print("map toggle button tapped")
+        let pmvc = PDFMapViewController()
+        navigationController?.pushViewController(pmvc, animated: true)
     }
     
     @objc func elevatorEscalatorStatusButtonTapped(_ sender: UIButton) {
@@ -209,7 +210,6 @@ class MapViewController: UIViewController {
     @objc func subwayTimesButtonTapped(_ sender: UIButton) {
         let lmvc = LiveMapViewController()
         navigationController?.pushViewController(lmvc, animated: true)
-        print("subwayTimesButtonTapped")
     }
 }
 

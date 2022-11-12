@@ -10,11 +10,14 @@ import WebKit
 
 class LiveMapViewController: UIViewController {
 
-    lazy var siteView: WKWebView = {
+    let siteView: WKWebView = {
         let web = WKWebView()
         web.translatesAutoresizingMaskIntoConstraints = false
         return web
     }()
+    
+    private var latitude: String = ""
+    private var longitude: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
