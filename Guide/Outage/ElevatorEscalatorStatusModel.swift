@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ElevatorEscalatorStatusModel: Decodable {
+struct ElevatorEscalatorStatusModel: Decodable, Hashable {
     /*
      "station" : "Cortlandt St",
        "borough" : "MN",

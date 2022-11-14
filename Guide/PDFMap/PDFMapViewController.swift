@@ -6,33 +6,15 @@
 //
 
 import UIKit
-//import WebKit
 import PDFKit
 
 class PDFMapViewController: UIViewController {
-    
-//    lazy var scrollView: UIScrollView = {
-//        let sV = UIScrollView()
-//        sV.translatesAutoresizingMaskIntoConstraints = false
-//        return sV
-//    }()
     
     lazy var pdfView: PDFView = {
         let pV = PDFView()
         pV.translatesAutoresizingMaskIntoConstraints = false
         return pV
     }()
-    
-//    lazy var pdfDocument: PDFDocument = {
-//        let pD = PDFDocument()
-//        return pD
-//    }()
-    
-//    lazy var webView: UIWebView = {
-//        let wV = UIWebView()
-//        wV.translatesAutoresizingMaskIntoConstraints = false
-//        return wV
-//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +32,13 @@ class PDFMapViewController: UIViewController {
                     pdfView.document = pdfDocument
                 }
             } else {
-                // Fallback on earlier versions
+                // iOS 16.0 minimum supported version
             }
         }
         
     }
     
     private func setup() {
-//        view.addSubview(scrollView)
         view.addSubview(pdfView)
         
         pdfView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -66,10 +47,6 @@ class PDFMapViewController: UIViewController {
         pdfView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 }
-
-//extension PDFMapViewController: UIScrollViewDelegate {
-//
-//}
 
 extension PDFMapViewController: PDFViewDelegate {
     

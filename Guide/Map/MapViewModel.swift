@@ -17,10 +17,8 @@ enum ExitResult<Exit, Error> {
 class MapViewModel {
     
     var exits: [Exit] = []
-    private let networkManager = NetworkManager()
     
     func fetchExitLocations(completion: (ExitResult<Exit, Error>) -> Void) {
-        fetchAll()
         guard let path = Bundle.main.path(forResource: "subway", ofType: "json") else { return }
         do {
             guard let nsData = NSData(contentsOfFile: path) else { return }
@@ -36,9 +34,5 @@ class MapViewModel {
     func passCustomMapURL() -> URL? {
         guard let styleURL = Bundle.main.url(forResource: "guideUserMap000", withExtension: "json") else { return nil }
         return styleURL
-    }
-    
-    func fetchAll() {
-        networkManager.fetchElevatorEscalatorStatus()
     }
 }

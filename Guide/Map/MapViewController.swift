@@ -15,7 +15,6 @@ class MapViewController: UIViewController {
     var markers: [GMSMarker] = []
     private let mapViewModel = MapViewModel()
     private let locationManager = CLLocationManager()
-
     
     lazy var mapView: GMSMapView = {
         let map = GMSMapView(frame: .zero)
@@ -200,7 +199,8 @@ class MapViewController: UIViewController {
     }
     
     @objc func elevatorEscalatorStatusButtonTapped(_ sender: UIButton) {
-        print("elevatorEscalatorStatusButtonTapped")
+        let ovc = OutageViewController()
+        navigationController?.pushViewController(ovc, animated: true)
     }
     
     @objc func serviceStatusButtonTapped(_ sender: UIButton) {
@@ -251,14 +251,14 @@ extension MapViewController: GMSMapViewDelegate {
         //
     }
     
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        guard let userLocation = locationManager.location
-               else { return false }
-        let markLocation = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
-        let meters = userLocation.distance(from: markLocation)
-        distanceLabel.text = String(format: "%.2f", meters)
-        return true
-    }
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//        guard let userLocation = locationManager.location
+//               else { return false }
+//        let markLocation = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
+//        let meters = userLocation.distance(from: markLocation)
+//        distanceLabel.text = String(format: "%.2f", meters)
+//        return true
+//    }
 }
 
 extension MapViewController: GMSIndoorDisplayDelegate {

@@ -6,12 +6,37 @@
 //
 
 import Foundation
+import Network
+
+enum StatusResult {
+    case success([ElevatorEscalatorStatusModel])
+    case failure(Error)
+}
 
 class NetworkManager {
     private let serviceStatusURL: URL? = URL(string: Constants.Endpoint.serviceStatusURLString)
     private let elevatorEscalatorStatusURL: URL? = URL(string: Constants.Endpoint.elevatorEscalatorStatusURLString)
     private let session: URLSession = URLSession.shared
     private let apiKey: String = Constants.mtaAPIKey
+    
+    private let monitor = NWPathMonitor()
+    private let queue = DispatchQueue(label: "Internet Connection Monitor")
+    
+    static let shared = NetworkManager()
+    private init() { }
+    
+    func checkService() {
+        
+        monitor.pathUpdateHandler = { pathHandler in
+            if pathHandler.status == .satisfied {
+                print("ok")
+            }
+            else {
+                print("no connection")
+            }
+        }
+        monitor.start(queue: queue)
+    }
     
     func fetchServiceStatus() {
         guard let ssURL = serviceStatusURL else { return }
@@ -42,7 +67,7 @@ class NetworkManager {
             .resume()
     }
     
-    func fetchElevatorEscalatorStatus() {
+    func fetchElevatorEscalatorStatus(_ completion: @escaping (StatusResult) -> ()) {
         guard let eesURL = elevatorEscalatorStatusURL else { return }
         var request = URLRequest(url: eesURL)
         request.setValue(apiKey, forHTTPHeaderField: Constants.apiHeaderKeyString)
@@ -54,11 +79,12 @@ class NetworkManager {
                 if let stuff = stuff {
                     
                     do {
-                        let _ = try JSONDecoder().decode([ElevatorEscalatorStatusModel].self, from: stuff)
-
+                        let list = try JSONDecoder().decode([ElevatorEscalatorStatusModel].self, from: stuff)
+                        completion(.success(list))
                     }
                     catch {
                         print("\(error)")
+                        completion(.failure(error))
                     }
                 }
             }
