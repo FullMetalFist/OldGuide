@@ -95,4 +95,30 @@ class NetworkManager {
     // create enum to map network call to specific line
     // build generic network around fetching data and drop in specific feed from enum
     // display cells
+    
+    func fetchPathFromURL(with stringURL: String) {
+        guard let url = URL(string: stringURL + "&key=\(Constants.googleMapsAPIKey)") else { return }
+        var request = URLRequest(url: url)
+        request.setValue(apiKey, forHTTPHeaderField: Constants.apiHeaderKeyString)
+        let _ = session.dataTask(with: request) { path, response, error in
+            print("\n\n\n\n")
+            print(path)
+            print(response)
+            print(error)
+            print("\n\n\n\n")
+            
+            guard let httpResponse = response as? HTTPURLResponse else { return }
+            
+            if httpResponse.statusCode == 200 {
+                if let path = path {
+                    do {
+                        print(path)
+                    }
+                    catch {
+                        print(error)
+                    }
+                }
+            }
+        }
+    }
 }

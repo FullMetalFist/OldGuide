@@ -87,6 +87,10 @@ class MapViewController: UIViewController {
         fetchExits()
     }
     
+    func fetchDirections(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
+        NetworkManager.shared.fetchPathFromURL(with: "\(Constants.Endpoint.directionsAPIURLString)?origin=\(origin.latitude),\(origin.longitude)&destination=\(destination.latitude),\(destination.longitude)")
+    }
+    
     private func addTargets() {
         mapToggleButton.addTarget(self, action: #selector(mapToggleButtonTapped(_:)), for: .touchUpInside)
         elevatorEscalatorStatusButton.addTarget(self, action: #selector(elevatorEscalatorStatusButtonTapped(_:)), for: .touchUpInside)
@@ -178,6 +182,7 @@ class MapViewController: UIViewController {
         serviceStatusButton.bottomAnchor.constraint(equalTo: elevatorEscalatorStatusButton.topAnchor, constant: 8).isActive = true
         serviceStatusButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         serviceStatusButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        serviceStatusButton.isHidden = true
         
         subwayTimesButton.bottomAnchor.constraint(equalTo: mapToggleButton.topAnchor, constant: 8).isActive = true
         subwayTimesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
@@ -247,18 +252,15 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: GMSMapViewDelegate {
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        //
-    }
-    
-//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//        guard let userLocation = locationManager.location
-//               else { return false }
-//        let markLocation = CLLocation(latitude: marker.position.latitude, longitude: marker.position.longitude)
-//        let meters = userLocation.distance(from: markLocation)
-//        distanceLabel.text = String(format: "%.2f", meters)
-//        return true
+//    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+//        
 //    }
+    
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        guard let userLocation = locationManager.location else { return false }
+        fetchDirections(origin: userLocation.coordinate, destination: marker.position)
+        return true
+    }
 }
 
 extension MapViewController: GMSIndoorDisplayDelegate {
