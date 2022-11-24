@@ -16,6 +16,7 @@
 		99936C152920375300D6817C /* OutageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99936C142920375300D6817C /* OutageViewController.swift */; };
 		99936C1729203EDF00D6817C /* OutageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99936C1629203EDF00D6817C /* OutageViewModel.swift */; };
 		99936C1B2921B7F000D6817C /* OutageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99936C1A2921B7F000D6817C /* OutageDetailViewController.swift */; };
+		99936C1E292ED54700D6817C /* RouteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99936C1D292ED54700D6817C /* RouteModel.swift */; };
 		99E0D1E72907518300A7D6B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E62907518300A7D6B7 /* AppDelegate.swift */; };
 		99E0D1E92907518300A7D6B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */; };
 		99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D1EA2907518300A7D6B7 /* MapViewController.swift */; };
@@ -83,6 +84,7 @@
 		99936C142920375300D6817C /* OutageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutageViewController.swift; sourceTree = "<group>"; };
 		99936C1629203EDF00D6817C /* OutageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutageViewModel.swift; sourceTree = "<group>"; };
 		99936C1A2921B7F000D6817C /* OutageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutageDetailViewController.swift; sourceTree = "<group>"; };
+		99936C1D292ED54700D6817C /* RouteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteModel.swift; sourceTree = "<group>"; };
 		99E0D1E32907518300A7D6B7 /* Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Guide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E0D1E62907518300A7D6B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99E0D1E82907518300A7D6B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,14 @@
 			path = PDFMap;
 			sourceTree = "<group>";
 		};
+		99936C1C292ED20300D6817C /* Route */ = {
+			isa = PBXGroup;
+			children = (
+				99936C1D292ED54700D6817C /* RouteModel.swift */,
+			);
+			path = Route;
+			sourceTree = "<group>";
+		};
 		99E0D1DA2907518300A7D6B7 = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +304,7 @@
 		99E0D247290814A100A7D6B7 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				99936C1C292ED20300D6817C /* Route */,
 				99E0D2482908167A00A7D6B7 /* MapViewModel.swift */,
 				99E0D1EA2907518300A7D6B7 /* MapViewController.swift */,
 				99936BFE291C04CD00D6817C /* Exit */,
@@ -465,6 +476,7 @@
 				99936C1B2921B7F000D6817C /* OutageDetailViewController.swift in Sources */,
 				99E0D25029084EEA00A7D6B7 /* NetworkManager.swift in Sources */,
 				99936C1729203EDF00D6817C /* OutageViewModel.swift in Sources */,
+				99936C1E292ED54700D6817C /* RouteModel.swift in Sources */,
 				99E0D25F2911DBB100A7D6B7 /* SubwayTileLabel.swift in Sources */,
 				99E0D25B290F116500A7D6B7 /* Colors.swift in Sources */,
 				99936C152920375300D6817C /* OutageViewController.swift in Sources */,
