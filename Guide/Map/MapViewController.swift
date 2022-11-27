@@ -88,7 +88,23 @@ class MapViewController: UIViewController {
     }
     
     func fetchDirections(origin: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
-        NetworkManager.shared.fetchPathFromURL(with: "\(Constants.Endpoint.directionsAPIURLString)?origin=\(origin.latitude),\(origin.longitude)&destination=\(destination.latitude),\(destination.longitude)")
+        
+        NetworkManager.shared.fetchPathFromURL(origin: "\(origin.latitude),\(origin.longitude)", destination: "\(destination.latitude),\(destination.longitude)", completion: { result in
+            
+            switch result {
+            case .success(let r):
+                let points = r.overviewPolyline.points
+                DispatchQueue.main.async {
+                    let path = GMSPath.init(fromEncodedPath: points)
+                    let polyline = GMSPolyline.init(path: path)
+                    polyline.strokeColor = .orange
+                    polyline.strokeWidth = 5
+                    polyline.map = self.mapView
+                }
+            case .failure(let e):
+                print(e.localizedDescription)
+            }
+        })
     }
     
     private func addTargets() {
@@ -161,6 +177,7 @@ class MapViewController: UIViewController {
         self.view.addSubview(elevatorEscalatorStatusButton)
         self.view.addSubview(serviceStatusButton)
         self.view.addSubview(subwayTimesButton)
+        mapToggleButton.isHidden = true
         
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150).isActive = true
@@ -170,6 +187,10 @@ class MapViewController: UIViewController {
         distanceLabel.topAnchor.constraint(equalTo: mapView.bottomAnchor).isActive = true
         distanceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         distanceLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        if #available(iOS 16.0, *) {
+            mapToggleButton.isHidden = false
+        }
         
         mapToggleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26).isActive = true
         mapToggleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
