@@ -32,8 +32,6 @@ class OutageViewController: UIViewController {
                 case .success(let outageList):
                     self.outages = outageList
                     self.tableView.reloadData()
-                    print("outages: \(self.outages)")
-                    print("list: \(outageList)")
                 case .failure(let e):
                     print("error: \(e.localizedDescription)")
                 }

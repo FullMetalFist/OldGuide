@@ -55,13 +55,10 @@ class NetworkManager {
                     
                     do {
                         let bunch = try JSONDecoder().decode([String: [ServiceEntityModel]].self, from: stuff)
-                        print("\(bunch)")
                     }
                     catch {
-                        print("\n\n\n\n")
                         print("\(error)")
                         print("\(error.localizedDescription)")
-                        print("\n\n\n\n")
 
                     }
                         
@@ -105,18 +102,12 @@ class NetworkManager {
         let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { data, response, error in
             
-            guard let httpResponse = response as? HTTPURLResponse else { return }
             if let data = data {
                 do {
                     
                     let json = try JSONSerialization.jsonObject(with: data) as? [String: AnyObject]
-                    print(json)
-                    print(type(of: json))
-                    print(json?["routes"])
                     guard let dictPath = Route(from: json) else { return }
-//                    let path = try JSONDecoder().decode(Route.self, from: data)
                     completion(.success(dictPath))
-//                    completion(.success(path))
                 }
                 catch {
                     print(error.localizedDescription)

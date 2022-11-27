@@ -32,7 +32,7 @@ class MapViewModel {
     }
     
     func passCustomMapURL() -> URL? {
-        guard let styleURL = Bundle.main.url(forResource: "guideUserMap000", withExtension: "json") else { return nil }
+        guard let styleURL = Bundle.main.url(forResource: "guideUserMap001", withExtension: "json") else { return nil }
         return styleURL
     }
 }

@@ -27,7 +27,6 @@ struct Route: Decodable {
     }
     
     init?(from dictionary: Dictionary<String, AnyObject>?) {
-        print(dictionary)
         guard let route = dictionary?["routes"]?.firstObject as? Dictionary<String, AnyObject>,
               let summary = route["summary"] as? String,
               let polyline = route["overview_polyline"] as? Dictionary<String, String>,
