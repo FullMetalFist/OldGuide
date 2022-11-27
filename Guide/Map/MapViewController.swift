@@ -277,10 +277,14 @@ extension MapViewController: GMSMapViewDelegate {
 //        
 //    }
     
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        guard let userLocation = locationManager.location else { return false }
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//
+//        return true
+//    }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        guard let userLocation = locationManager.location else { return }
         fetchDirections(origin: userLocation.coordinate, destination: marker.position)
-        return true
     }
 }
 
