@@ -16,13 +16,20 @@ class LiveMapViewController: UIViewController {
         return web
     }()
     
-    private var latitude: String = ""
-    private var longitude: String = ""
+    private var latitude: Double = 0.0
+    private var longitude: Double = 0.0
+    
+    convenience init(lat: Double?, lng: Double?) {
+        self.init()
+        self.latitude = lat ?? 0.0
+        self.longitude = lng ?? 0.0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        guard let url = URL(string: Constants.Endpoint.liveSystemMapURLString) else { return }
+        let urlString = Constants.Endpoint().liveFeedLocation(latitude: latitude, longitude: longitude)
+        guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         siteView.load(request)
     }

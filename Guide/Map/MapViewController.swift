@@ -234,7 +234,8 @@ class MapViewController: UIViewController {
     }
     
     @objc func subwayTimesButtonTapped(_ sender: UIButton) {
-        let lmvc = LiveMapViewController()
+        let location = locationManager.location
+        let lmvc = LiveMapViewController(lat: location?.coordinate.latitude, lng: location?.coordinate.longitude)
         navigationController?.pushViewController(lmvc, animated: true)
     }
 }
