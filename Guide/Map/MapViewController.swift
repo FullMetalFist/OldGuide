@@ -24,6 +24,11 @@ class MapViewController: UIViewController {
         return map
     }()
     
+    lazy var polyLine: GMSPolyline = {
+        let pL = GMSPolyline()
+        return pL
+    }()
+    
     lazy var bottomAreaStackView: UIStackView = {
         return UIStackView()
     }()
@@ -93,13 +98,15 @@ class MapViewController: UIViewController {
             
             switch result {
             case .success(let r):
+                self.polyLine.strokeColor = .clear
+                
                 let points = r.overviewPolyline.points
                 DispatchQueue.main.async {
                     let path = GMSPath.init(fromEncodedPath: points)
-                    let polyline = GMSPolyline.init(path: path)
-                    polyline.strokeColor = .orange
-                    polyline.strokeWidth = 5
-                    polyline.map = self.mapView
+                    self.polyLine = GMSPolyline.init(path: path)
+                    self.polyLine.strokeColor = .orange
+                    self.polyLine.strokeWidth = 5
+                    self.polyLine.map = self.mapView
                 }
             case .failure(let e):
                 print(e.localizedDescription)
