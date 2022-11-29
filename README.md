@@ -14,6 +14,11 @@ We have implemented:
     MTA Elevator & Escalator feed
     MTA live status
     
+Devpost link:
+https://devpost.com/software/guide-y6fakl
+
+Testflight link:
+https://testflight.apple.com/join/YTIZXv1G
 
 ## Bugs and feature requests
 
