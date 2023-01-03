@@ -8,11 +8,13 @@
 import UIKit
 import CoreLocation
 import GoogleMaps
+import GoogleMapsUtils
 
 class MapViewController: UIViewController {
     
-    var exits: [Exit] = []
-    var markers: [GMSMarker] = []
+    private var exits: [Exit] = []
+    private var clusterManager: GMUClusterManager?
+    private var markers: [GMSMarker] = []
     private let mapViewModel = MapViewModel()
     private let locationManager = CLLocationManager()
     
@@ -98,10 +100,10 @@ class MapViewController: UIViewController {
             
             switch result {
             case .success(let r):
-                self.polyLine.strokeColor = .clear
                 
                 let points = r.overviewPolyline.points
                 DispatchQueue.main.async {
+                    self.polyLine.strokeColor = .clear
                     let path = GMSPath.init(fromEncodedPath: points)
                     self.polyLine = GMSPolyline.init(path: path)
                     self.polyLine.strokeColor = .orange
@@ -135,23 +137,27 @@ class MapViewController: UIViewController {
         }
         
         mapView.clear()
+        
         let _ = exits.map { exit in
             let mapExit = GMSMarker()
             mapExit.title = exit.stationName
             mapExit.isDraggable = false
             
-            if mapView.camera.zoom > 11 {
-                stationLevel(exit, marker: mapExit)
-            }
-            else {
-                exitLevel(exit, marker: mapExit)
-            }
+            exitLevel(exit, marker: mapExit)
             
             markers.append(mapExit)
             mapExit.map = mapView
-
+            
             return mapExit
         }
+//        let iconGenerator = GMUDefaultClusterIconGenerator(buckets: [NSNumber(value: 3)])
+//        let distanceBased = GMUNonHierarchicalDistanceBasedAlgorithm(clusterDistancePoints: 1)
+//        let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
+//        renderer.delegate = self
+//        clusterManager = GMUClusterManager(map: mapView, algorithm: distanceBased!, renderer: renderer)
+//        clusterManager?.add(markers)
+//        clusterManager?.setMapDelegate(self)
+//        clusterManager?.cluster()
     }
     
     private func stationLevel(_ exit: Exit, marker: GMSMarker) {
@@ -284,8 +290,20 @@ extension MapViewController: GMSMapViewDelegate {
         guard let userLocation = locationManager.location else { return }
         fetchDirections(origin: userLocation.coordinate, destination: marker.position)
     }
+    
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//        mapView.animate(toLocation: marker.position)
+//
+//        if marker.userData is GMUCluster {
+//            mapView.animate(toZoom: mapView.camera.zoom + 1)
+//            print("clustered marker")
+//            return true
+//        }
+//        print("regular marker")
+//        return false
+//    }
 }
 
-extension MapViewController: GMSIndoorDisplayDelegate {
+extension MapViewController: GMUClusterRendererDelegate {
 
 }
