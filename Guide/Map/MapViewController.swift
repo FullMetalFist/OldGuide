@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 import GoogleMaps
 import GoogleMapsUtils
+import ARKit
 
 class MapViewController: UIViewController {
     
@@ -59,11 +60,11 @@ class MapViewController: UIViewController {
         return button
     }()
     
-    lazy var serviceStatusButton: UIButton = {
+    lazy var arCoreButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .black
-        button.setTitle("Service", for: .normal)
+        button.setTitle("AR Service", for: .normal)
         button.titleLabel?.backgroundColor = .black
         return button
     }()
@@ -119,7 +120,7 @@ class MapViewController: UIViewController {
     private func addTargets() {
         mapToggleButton.addTarget(self, action: #selector(mapToggleButtonTapped(_:)), for: .touchUpInside)
         elevatorEscalatorStatusButton.addTarget(self, action: #selector(elevatorEscalatorStatusButtonTapped(_:)), for: .touchUpInside)
-        serviceStatusButton.addTarget(self, action: #selector(serviceStatusButtonTapped(_:)), for: .touchUpInside)
+        arCoreButton.addTarget(self, action: #selector(arServiceButtonTapped(_:)), for: .touchUpInside)
         subwayTimesButton.addTarget(self, action: #selector(subwayTimesButtonTapped(_:)), for: .touchUpInside)
     }
     
@@ -150,14 +151,6 @@ class MapViewController: UIViewController {
             
             return mapExit
         }
-//        let iconGenerator = GMUDefaultClusterIconGenerator(buckets: [NSNumber(value: 3)])
-//        let distanceBased = GMUNonHierarchicalDistanceBasedAlgorithm(clusterDistancePoints: 1)
-//        let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: iconGenerator)
-//        renderer.delegate = self
-//        clusterManager = GMUClusterManager(map: mapView, algorithm: distanceBased!, renderer: renderer)
-//        clusterManager?.add(markers)
-//        clusterManager?.setMapDelegate(self)
-//        clusterManager?.cluster()
     }
     
     private func stationLevel(_ exit: Exit, marker: GMSMarker) {
@@ -188,9 +181,10 @@ class MapViewController: UIViewController {
         self.view.addSubview(distanceLabel)
         self.view.addSubview(mapToggleButton)
         self.view.addSubview(elevatorEscalatorStatusButton)
-        self.view.addSubview(serviceStatusButton)
+        self.view.addSubview(arCoreButton)
         self.view.addSubview(subwayTimesButton)
         mapToggleButton.isHidden = true
+        arCoreButton.isHidden = true
         
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150).isActive = true
@@ -205,6 +199,10 @@ class MapViewController: UIViewController {
             mapToggleButton.isHidden = false
         }
         
+        if ARConfiguration.isSupported {
+            arCoreButton.isHidden = false
+        }
+        
         mapToggleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26).isActive = true
         mapToggleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         mapToggleButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -213,10 +211,9 @@ class MapViewController: UIViewController {
         elevatorEscalatorStatusButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         elevatorEscalatorStatusButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
-        serviceStatusButton.bottomAnchor.constraint(equalTo: elevatorEscalatorStatusButton.topAnchor, constant: 8).isActive = true
-        serviceStatusButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-        serviceStatusButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        serviceStatusButton.isHidden = true
+        arCoreButton.bottomAnchor.constraint(equalTo: elevatorEscalatorStatusButton.topAnchor, constant: 8).isActive = true
+        arCoreButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        arCoreButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
         subwayTimesButton.bottomAnchor.constraint(equalTo: mapToggleButton.topAnchor, constant: 8).isActive = true
         subwayTimesButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
@@ -242,8 +239,9 @@ class MapViewController: UIViewController {
         navigationController?.pushViewController(ovc, animated: true)
     }
     
-    @objc func serviceStatusButtonTapped(_ sender: UIButton) {
-        print("serviceStatusButtonTapped")
+    @objc func arServiceButtonTapped(_ sender: UIButton) {
+        let arvc = ARGuideViewController()
+        navigationController?.pushViewController(arvc, animated: true)
     }
     
     @objc func subwayTimesButtonTapped(_ sender: UIButton) {
@@ -290,18 +288,6 @@ extension MapViewController: GMSMapViewDelegate {
         guard let userLocation = locationManager.location else { return }
         fetchDirections(origin: userLocation.coordinate, destination: marker.position)
     }
-    
-//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-//        mapView.animate(toLocation: marker.position)
-//
-//        if marker.userData is GMUCluster {
-//            mapView.animate(toZoom: mapView.camera.zoom + 1)
-//            print("clustered marker")
-//            return true
-//        }
-//        print("regular marker")
-//        return false
-//    }
 }
 
 extension MapViewController: GMUClusterRendererDelegate {

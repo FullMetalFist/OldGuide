@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: scene)
-        let mapVC = MapViewController()
+        let mapVC = ARGuideViewController()// MapViewController()
         let navVC = UINavigationController(rootViewController: mapVC)
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()

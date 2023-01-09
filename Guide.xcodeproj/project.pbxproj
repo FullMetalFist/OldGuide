@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		997B93F72964EDD8002C97E4 /* ARGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997B93F62964EDD8002C97E4 /* ARGuideViewController.swift */; };
 		99936C01291D5CA900D6817C /* LiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99936C00291D5CA900D6817C /* LiveMapViewController.swift */; };
 		99936C05291DC69C00D6817C /* guideUserMap000.json in Resources */ = {isa = PBXBuildFile; fileRef = 99936C04291DC69C00D6817C /* guideUserMap000.json */; };
 		99936C08291F09B100D6817C /* GoogleMapsUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 99936C07291F09B100D6817C /* GoogleMapsUtils */; };
@@ -57,6 +58,7 @@
 		99E0D25B290F116500A7D6B7 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D25A290F116500A7D6B7 /* Colors.swift */; };
 		99E0D25D2911848100A7D6B7 /* ExitCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */; };
 		99E0D25F2911DBB100A7D6B7 /* SubwayTileLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E0D25E2911DBB100A7D6B7 /* SubwayTileLabel.swift */; };
+		F348C6C7F65503A0CB1DA4E1 /* Pods_Guide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E457BD15665194F161C14EE /* Pods_Guide.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D75977CE7EA2FB5A65A7B56 /* Pods-Guide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guide.release.xcconfig"; path = "Target Support Files/Pods-Guide/Pods-Guide.release.xcconfig"; sourceTree = "<group>"; };
+		5E457BD15665194F161C14EE /* Pods_Guide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Guide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		997B93F62964EDD8002C97E4 /* ARGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGuideViewController.swift; sourceTree = "<group>"; };
 		99936C00291D5CA900D6817C /* LiveMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMapViewController.swift; sourceTree = "<group>"; };
 		99936C04291DC69C00D6817C /* guideUserMap000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = guideUserMap000.json; sourceTree = SOURCE_ROOT; };
 		99936C0A291F10A700D6817C /* PDFMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFMapViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +136,7 @@
 		99E0D25A290F116500A7D6B7 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		99E0D25C2911848100A7D6B7 /* ExitCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitCalloutView.swift; sourceTree = "<group>"; };
 		99E0D25E2911DBB100A7D6B7 /* SubwayTileLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayTileLabel.swift; sourceTree = "<group>"; };
+		E14186569C6E9127CA7D4C91 /* Pods-Guide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Guide.debug.xcconfig"; path = "Target Support Files/Pods-Guide/Pods-Guide.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +165,7 @@
 				99E0D21C290752BA00A7D6B7 /* GoogleMapsBase.xcframework in Frameworks */,
 				99E0D2222907533100A7D6B7 /* GoogleMaps.framework in Frameworks */,
 				99E0D21A290752BA00A7D6B7 /* GoogleMaps.xcframework in Frameworks */,
+				F348C6C7F65503A0CB1DA4E1 /* Pods_Guide.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +186,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7575C63B9A5AA8AB2DA81E4D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E14186569C6E9127CA7D4C91 /* Pods-Guide.debug.xcconfig */,
+				4D75977CE7EA2FB5A65A7B56 /* Pods-Guide.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		997B93F52964ED97002C97E4 /* ARGuide */ = {
+			isa = PBXGroup;
+			children = (
+				997B93F62964EDD8002C97E4 /* ARGuideViewController.swift */,
+			);
+			path = ARGuide;
+			sourceTree = "<group>";
+		};
 		99936BFE291C04CD00D6817C /* Exit */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +246,7 @@
 				99E0D2062907518400A7D6B7 /* GuideUITests */,
 				99E0D1E42907518300A7D6B7 /* Products */,
 				99E0D216290752BA00A7D6B7 /* Frameworks */,
+				7575C63B9A5AA8AB2DA81E4D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +263,7 @@
 		99E0D1E52907518300A7D6B7 /* Guide */ = {
 			isa = PBXGroup;
 			children = (
+				997B93F52964ED97002C97E4 /* ARGuide */,
 				99936C09291F108A00D6817C /* PDFMap */,
 				99E0D2572909CFC800A7D6B7 /* ServiceStatus */,
 				99E0D24E29084DED00A7D6B7 /* Outage */,
@@ -300,6 +326,7 @@
 				99E0D218290752BA00A7D6B7 /* GoogleMapsBase.xcframework */,
 				99E0D219290752BA00A7D6B7 /* GoogleMapsCore.xcframework */,
 				99E0D2212907533100A7D6B7 /* GoogleMaps.framework */,
+				5E457BD15665194F161C14EE /* Pods_Guide.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -342,9 +369,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99E0D20D2907518400A7D6B7 /* Build configuration list for PBXNativeTarget "Guide" */;
 			buildPhases = (
+				3D4B5F9D154E763091FA2253 /* [CP] Check Pods Manifest.lock */,
 				99E0D1DF2907518300A7D6B7 /* Sources */,
 				99E0D1E02907518300A7D6B7 /* Frameworks */,
 				99E0D1E12907518300A7D6B7 /* Resources */,
+				563C0C0A4C3B0B4025D6F9B0 /* [CP] Embed Pods Frameworks */,
+				CF36560849E54202F1AE58E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -472,6 +502,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D4B5F9D154E763091FA2253 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Guide-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		563C0C0A4C3B0B4025D6F9B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Guide/Pods-Guide-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Guide/Pods-Guide-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Guide/Pods-Guide-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF36560849E54202F1AE58E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Guide/Pods-Guide-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Guide/Pods-Guide-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Guide/Pods-Guide-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		99E0D1DF2907518300A7D6B7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -486,6 +575,7 @@
 				99936C152920375300D6817C /* OutageViewController.swift in Sources */,
 				99936C01291D5CA900D6817C /* LiveMapViewController.swift in Sources */,
 				99E0D1EB2907518300A7D6B7 /* MapViewController.swift in Sources */,
+				997B93F72964EDD8002C97E4 /* ARGuideViewController.swift in Sources */,
 				99E0D2592909CFE300A7D6B7 /* ServiceEntityModel.swift in Sources */,
 				99936C0B291F10A700D6817C /* PDFMapViewController.swift in Sources */,
 				99E0D2562909910D00A7D6B7 /* ElevatorEscalatorStatusModel.swift in Sources */,
@@ -658,6 +748,7 @@
 		};
 		99E0D20E2907518400A7D6B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E14186569C6E9127CA7D4C91 /* Pods-Guide.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -670,6 +761,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Guide/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -692,6 +784,7 @@
 		};
 		99E0D20F2907518400A7D6B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D75977CE7EA2FB5A65A7B56 /* Pods-Guide.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -704,6 +797,7 @@
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Guide/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need location services turned on for this app to guide you to the nearest NYC Subway";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
